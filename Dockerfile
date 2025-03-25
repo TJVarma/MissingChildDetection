@@ -1,7 +1,6 @@
-# Use Python 3.9 base image — compatible with system-installed dlib
 FROM python:3.9-slim
 
-# Install system dependencies
+# Install system dependencies for dlib, OpenCV, SQLite, etc.
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
@@ -16,21 +15,23 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     ffmpeg \
     libsqlite3-dev \
-    python3-dlib \
+    curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
 WORKDIR /app
 
 # Copy project files
 COPY . /app
 
-# Install Python dependencies (skip dlib!)
+# Upgrade pip first
 RUN pip install --upgrade pip
+
+# Install dlib with custom flags to avoid memory crash
+RUN pip install --no-cache-dir dlib --config-settings="--build-option=--jobs=1"
+
+# Install the rest of the requirements (skip dlib in requirements.txt!)
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose Flask port
 EXPOSE 5000
 
-# Start the app with gunicorn
 CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000"]

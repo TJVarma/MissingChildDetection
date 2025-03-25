@@ -1,0 +1,6 @@
+pip
+face-recognition
+Flask
+dlb
+gunicorn
+flask-cors

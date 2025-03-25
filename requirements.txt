@@ -1,4 +1,5 @@
 pip
+cmake
 face-recognition
 Flask
 dlb

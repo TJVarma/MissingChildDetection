@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <title>adminlogin</title>
+</head>
+<body class="bg-nav">
+<center>
+    <table class="table table-striped table-bordered">
+    <style>
+        body {
+            background-image: url('static/index.jpg');
+        }
+        p{
+            font-size:40px ;
+            font-weight: bolder;
+            color: rgb(250, 249, 249);
+
+        }
+    .table-cell {
+        padding: 10px;
+        border: 1px solid #fc0b0b;
+        color: rgb(240, 233, 233); 
+        text-align: center;
+    }
+    .image-cell img {
+        width: 100px;  
+        height: 100px; 
+        object-fit: cover;
+        cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+    }
+    .file-cell a {
+        color: blue;  
+        text-decoration: underline;  
+    }
+    /* Add more styles as needed for your modal or lightbox */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 50px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(241, 69, 17, 0.9);
+    }
+    .modal-content {
+        margin: auto;
+        display: block;
+        max-width: 800px;
+    }
+    .modal-content img {
+        width: 100%;
+        height: auto;
+    }
+    a {
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+        color: #fff; /* White text color for navbar links */
+        background-color: #0073e6; /* Official blue color for navbar links */
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    a:hover {
+        background-color: #0057b3; /* Darker blue on hover */
+    }
+    </style>
+    <p>Register child details </p>
+    <a href="/details">Back</a>
+    <form action="/accept_child" method="post">        
+    <input type='text' name='number' placeholder='ID NUMBER FOR DOWNLOAD' required>
+    <input type="submit" value="submit">
+</form><br>
+<br>
+<br>
+        <thead>
+            <tr>
+                <th class="table-cell">ID</th>
+                <th class="table-cell">CHILD NAME</th>
+                <th class="table-cell">PARENT NAME</th>
+                <th class="table-cell">PHONE NUMBER</th>
+                <th class="table-cell">EMAIL ID</th>
+                <th class="table-cell">ADDRESS</th>
+                <th class="table-cell">AADHAR NUMBER</th>
+                <th class="table-cell">PHOTO1</th>
+                <th class="table-cell">PHOTO2</th>
+                <th class="table-cell">PHOTO3</th>
+                <th class="table-cell">PHOTO4</th>
+                <th class="table-cell">FIR</th>
+                <th class="table-cell">ACTIONS</th>
+                <!-- Add more table headers if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in results %}
+                <tr>
+                    <!-- ... (previous HTML code) ... -->
+
+                    <td class="table-cell">{{ item[0] }}</td>
+                    <!-- Add an "Accept" button with a data attribute containing the item ID -->
+                    
+                    <td class="table-cell">{{ item[1] }}</td>
+                    <td class="table-cell">{{ item[2] }}</td>
+                    <td class="table-cell">{{ item[3] }}</td>
+                    <td class="table-cell">{{ item[4] }}</td>
+                    <td class="table-cell">{{ item[5] }}</td>
+                    <td class="table-cell">{{ item[6] }}</td>
+                    <td class="image-cell">
+                        <img src="data:image/jpeg;base64,{{ item[7]|b64encode }}" onclick="showImage('{{ item[7]|b64encode }}')" alt="Click to view full size">
+                    </td>
+                    <td class="image-cell">
+                        <img src="data:image/jpeg;base64,{{ item[8]|b64encode }}" onclick="showImage('{{ item[8]|b64encode }}')" alt="Click to view full size">
+                    </td>
+                    <td class="image-cell">
+                        <img src="data:image/jpeg;base64,{{ item[9]|b64encode }}" onclick="showImage('{{ item[9]|b64encode }}')" alt="Click to view full size">
+                    </td>
+                    <td class="image-cell">
+                        <img src="data:image/jpeg;base64,{{ item[10]|b64encode }}" onclick="showImage('{{ item[10]|b64encode }}')" alt="Click to view full size">
+                    </td>
+                    <td class="image-cell">
+                        <img src="data:image/jpeg;base64,{{ item[11]|b64encode }}" onclick="showImage('{{ item[11]|b64encode }}')" alt="Click to view full size">
+                    </td>
+                    <td class="table-cell">
+                        <button class="btn btn-success accept-button" data-id="{{ item[0] }}">Accept</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Modal for full-size image preview -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeImageModal()">&times;</span>
+        <div class="modal-content">
+            <img id="fullSizeImage" src="" alt="Full-size Image">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript functions to show and close the image modal
+        function showImage(base64Image) {
+            var fullSizeImage = document.getElementById("fullSizeImage");
+            fullSizeImage.src = "data:image/jpeg;base64," + base64Image;
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "block";
+        
+            // Add an event listener for the "keydown" event to close the modal on "Esc" key press
+            document.addEventListener("keydown", closeImageModalOnEsc);
+        }
+        
+        function closeImageModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        
+            // Remove the event listener for "Esc" key when the modal is closed
+            document.removeEventListener("keydown", closeImageModalOnEsc);
+        }
+        
+        // Function to close the modal on "Esc" key press
+        function closeImageModalOnEsc(event) {
+            if (event.key === "Escape") {
+                closeImageModal();
+            }
+        }
+        </script>>
+
+
+<!-- Add this script tag to include jQuery -->
+<script>
+    // JavaScript function to handle the click event of the "Accept" button
+    document.addEventListener("DOMContentLoaded", function() {
+        const acceptButtons = document.querySelectorAll(".accept-button");
+        acceptButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                // Retrieve the data-id attribute containing the item ID
+                const itemId = button.getAttribute("data-id");
+
+                // Send a request to your server to retrieve data from the access_table
+                // You can use AJAX, fetch API, or any other method here to retrieve data
+
+                // Once you have the data, populate the input fields or perform actions
+                // For example, if you have an input field with ID "number" to populate:
+                const numberInput = document.querySelector("input[name='number']");
+                numberInput.value = itemId; // Populate the input field with the item ID
+            });
+        });
+    });
+</script>
+
+</center>	
+</body>
+</html>

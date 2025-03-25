@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Page</title>
+    <style>
+        body {
+            background-image: url('static/index.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #fdf8f8; /* Dark text color */
+        }
+
+        h1 {
+            text-align: center;
+            color: #0073e6; /* Official blue color */
+        }
+
+        /* Back link style */
+        a {
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            color: #fff; /* White text color for navbar links */
+            background-color: #0073e6; /* Official blue color for navbar links */
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #0057b3; /* Darker blue on hover */
+        }
+
+        /* Form container styles */
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(247, 247, 250, 0.781); /* Semi-transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Box shadow for content */
+        }
+
+        /* Form label and input styles */
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #050303; /* Dark text color */
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #0073e6; /* Official blue color */
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0057b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/index">Back</a>
+    <div class="form-container">
+        <h1> Parent Registration Form</h1>
+        <form action="/parents_details" method="post">
+            <label for="name">Parent Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">contact:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br><br>
+
+            <input type="submit" value="Register">
+        </form>
+      
+    </div>
+</body>
+
+</html>

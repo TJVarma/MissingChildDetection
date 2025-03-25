@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>Registration Page</title>
+    <style>
+      body {
+        background-image: url('static/index.jpg');
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+      }
+  h1{
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+      a {
+          text-decoration: none;
+          color: #007bff;
+      }
+  
+      a {
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 0 10px;
+        color: #fff; /* White text color for navbar links */
+        background-color: #0073e6; /* Official blue color for navbar links */
+        border-radius: 5px;
+    }
+
+    a:hover {
+        background-color: #0057b3; /* Darker blue on hover */
+    }
+
+    /* Content styles */
+    .content {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Box shadow for content */
+    }
+  
+      .form {
+          max-width: 500px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #ffffffd5;
+          border-radius: 5px;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      }
+  
+      .form label {
+          font-weight: bold;
+          font-family: 'Times New Roman', Times, serif;
+          font-style: italic;
+          color: black;
+      }
+  
+      .form input[type="text"],
+      .form input[type="email"] {
+          width: 100%;
+          padding: 10px;
+          margin: 5px 0;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+      }
+  
+      .form input[type="file"] {
+          margin-top: 5px;
+      }
+  
+      .form input[type="submit"] {
+          background-color: #007bff;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          margin-top: 10px;
+      }
+  
+      .form input[type="submit"]:hover {
+          background-color: #0056b3;
+      }
+    </style>
+    
+  </head>
+  <body><center>
+    
+ 
+
+    <a href="/index">Back</a>
+  
+
+        <h1>Registration Form</h1>
+      
+        <form class="form" action='/child_details' method="POST" enctype="multipart/form-data">
+
+            <table>
+                
+                <tr> 
+                <td> <label>Child Name</label><br> </td>
+                <td> <input type="text" class="form-control" name="childname"><br> </td>
+                </tr>
+
+                <tr>
+                <td> <label>Parent Name</label><br> </td>
+                <td> <input type="text" class="form-control" name="parentname"><br> </td>
+                </tr>
+                
+                <tr>
+                <td><label>Phone number</label><br></td>
+                <td><input type="text" class="form-control" name="phone"><br></td>
+                </tr>
+
+                <tr>
+                <td><label>Email</label><br></td>
+                <td><input type="email" class="form-control" name="email"><br></td>
+                </tr>
+
+                <tr>
+                <td><label>Address</label><br></td>
+                <td><input type="text" class="form-control" name="address"><br></td>
+                </tr>
+
+                <tr>
+                <td><label>Aadhar Number</label></td>
+                <td><input type="text" class="form-control" name="aadhar"><br></td>
+                </tr>
+
+                <tr>
+                <td><label>Upload picture1</label></td>  
+                <td><input type="file" name="image1"></td>
+                </tr>
+                <tr>
+                <td><label>Upload picture2</label></td>  
+                <td><input type="file" name="image2"></td>
+              </tr>  
+              <tr>
+                <td><label>Upload picture3</label></td>  
+                <td><input type="file" name="image3"></td>
+              </tr>  
+              <tr>
+                <td><label>Upload picture4</label></td>  
+                <td><input type="file" name="image4"></td>
+              </tr>   
+              <tr>
+                <td><label>FIR COPY</label></td>  
+                <td><input type="file" name="image5"></td>
+              </tr>                      
+                </table>  
+                <br>
+                <input type="submit"  value="Submit">
+            </form>
+          </center>
+  </body>
+  </html>
+  

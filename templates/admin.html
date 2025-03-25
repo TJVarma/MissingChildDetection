@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <style>
+        body {
+            background-image: url('static/register.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #333; /* Dark text color */
+        }
+
+        h2 {
+            text-align: center;
+            color: #f9f9fa; /* Official blue color */
+            font-family: 'Times New Roman', Times, serif;
+            font-size:60px;
+            font-weight: bolder;
+        }   
+
+        /* Navbar styles */
+        .navbar {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            color: #fff; /* White text color for navbar links */
+            background-color: #0073e6; /* Official blue color for navbar links */
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            background-color: #0057b3; /* Darker blue on hover */
+        }
+
+        /* Form container styles */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Box shadow for content */
+        }
+
+        /* Form label and input styles */
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333; /* Dark text color */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #0073e6; /* Official blue color */
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0057b3; /* Darker blue on hover */
+        }
+
+        /* Blinking text animation */
+        .rolling-text {
+            text-align: center;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/index"><i class="fas fa-home"></i> HOME</a>
+    </div>
+    <h2>ADMIN LOGIN</h2>
+    <form method="post" action="/details">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <input type="submit" value="Login">
+    </form>
+        
+    <div class="rolling-text">
+        <p>This page is exclusively for administrators</p>
+    </div>
+</body>
+</html>

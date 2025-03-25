@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Page</title>
+    <center>
+        
+    
+    <table class="table table-striped table-bordered">
+        <style>
+            body {
+                background-image: url('static/index.jpg');
+            }
+            p{
+                font-size:40px ;
+                font-weight: bolder;
+                color: rgb(250, 249, 249);
+    
+            }
+        .table-cell {
+            padding: 10px;
+            border: 1px solid #fc0b0b;
+            color: rgb(240, 233, 233); 
+            text-align: center;
+        }
+        .image-cell img {
+            width: 100px;  
+            height: 100px; 
+            object-fit: cover;
+            cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+        }
+        .file-cell a {
+            color: blue;  
+            text-decoration: underline;  
+        }
+        /* Add more styles as needed for your modal or lightbox */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(241, 69, 17, 0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 800px;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+        h1{
+            font-size: 30px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bolder;
+            font-style: italic;
+            color: azure;
+        }
+        a {
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            color: #fff; /* White text color for navbar links */
+            background-color: #0073e6; /* Official blue color for navbar links */
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            background-color: #0057b3; /* Darker blue on hover */
+        }
+        </style>
+
+</head>
+<body>
+    
+
+    <h1>Latest Camera Updates</h1>
+    <a href="/details">Back</a>
+    <table class="table">
+        <tr>
+            <th class="table-cell">Child ID</th>
+            <th class="table-cell">Child Name</th>
+            <th class="table-cell">Parent Name</th>
+            <th class="table-cell">Email</th>  
+            <th class="table-cell">Phone</th>
+            <th class="table-cell">Address</th>
+            <th class="table-cell">Aadhar</th>
+            <th class="table-cell">Camera Location</th>
+            <th class="table-cell">Date</th>
+            <th class="table-cell">Child Picture</th>
+        </tr>
+        {% for item in result %}
+        <tr>
+            <td class="table-cell">{{ item[1] }}</td>
+            <td class="table-cell">{{ item[2] }}</td>
+            <td class="table-cell">{{ item[3] }}</td>
+            <td class="table-cell">{{ item[4] }}</td>
+            <td class="table-cell">{{ item[5] }}</td>
+            <td class="table-cell">{{ item[6] }}</td>
+            <td class="table-cell">{{ item[7] }}</td>
+            <td class="table-cell">{{ item[8] }}</td>
+            <td class="table-cell">{{ item[9] }}</td>
+            <td class="image-cell">
+                <img src="data:image/jpeg;base64,{{ item[10]|b64encode }}" onclick="showImage('{{ item[10]|b64encode }}')" alt="Click to view full size">
+            </td>
+        </tr>
+        {% endfor %}
+    </center>
+    </table>
+
+    <!-- Modal for full-size image preview -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeImageModal()">&times;</span>
+        <div class="modal-content">
+            <img id="fullSizeImage" src="" alt="Full-size Image">
+        </div>
+    </div>
+
+    <script>
+        // JavaScript functions to show and close the image modal
+        function showImage(base64Image) {
+            var fullSizeImage = document.getElementById("fullSizeImage");
+            fullSizeImage.src = "data:image/jpeg;base64," + base64Image;
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "block";
+        
+            // Add an event listener for the "keydown" event to close the modal on "Esc" key press
+            document.addEventListener("keydown", closeImageModalOnEsc);
+        }
+        
+        function closeImageModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        
+            // Remove the event listener for "Esc" key when the modal is closed
+            document.removeEventListener("keydown", closeImageModalOnEsc);
+        }
+        
+        // Function to close the modal on "Esc" key press
+        function closeImageModalOnEsc(event) {
+            if (event.key === "Escape") {
+                closeImageModal();
+            }
+        }
+    </script>
+</body>
+</html>

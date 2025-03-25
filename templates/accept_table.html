@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+    <title>adminlogin</title>
+  </head>
+  <body class="bg-nav">
+    <center>
+    <table>
+    <style>
+        body {
+            background-image: url('static/index.jpg');
+        }
+    .table-cell {
+        padding: 5px;
+        border: 1px solid #f30909;
+        color: rgb(252, 251, 251); 
+        text-align: center;
+    }
+    .image-cell img {
+        width: 100px;  
+        height: 100px; 
+        object-fit: cover;
+        cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+    }
+    .file-cell a {
+        color: blue;  
+        text-decoration: underline;  
+    }
+    /* Add more styles as needed for your modal or lightbox */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 50px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.9);
+    }
+    .modal-content {
+        margin: auto;
+        display: block;
+        max-width: 800px;
+    }
+    .modal-content img {
+        width: 100%;
+        height: auto;
+    }
+    p{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 20px;
+        font-style: italic;
+        font-weight: bolder;
+    }
+    </style>
+    <a href="/details">Back</a>
+    <p>accept details</p>
+        <thead>
+            <tr>
+                <th class="table-cell">ID</th>
+                <th class="table-cell">CHILD NAME</th>
+                <th class="table-cell">PARENT NAME</th>
+                <th class="table-cell">PHONE NUMBER</th>
+                <th class="table-cell">EMAIL ID</th>
+                <th class="table-cell">ADDRESS</th>
+                <th class="table-cell">AADHAR NUMBER</th>
+                <th class="table-cell">PHOTO1</th>
+                <th class="table-cell">PHOTO2</th>
+                <th class="table-cell">PHOTO3</th>
+                <th class="table-cell">PHOTO4</th>
+                <th class="table-cell">FIR</th>
+                <!-- Add more table headers if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in results %}
+                <tr>
+                    <td class="table-cell">{{ item[0] }}</td>
+                    <td class="table-cell">{{ item[1] }}</td>
+                    <td class="table-cell">{{ item[2] }}</td>
+                    <td class="table-cell">{{ item[3] }}</td>
+                    <td class="table-cell">{{ item[4] }}</td>
+                    <td class="table-cell">{{ item[5] }}</td>
+                    <td class="table-cell">{{ item[6] }}</td>
+                    <td class="image-cell">
+                        <img src="data:image/jpeg;base64,{{ item[7]|b64encode }}" onclick="showImage('{{ item[7]|b64encode }}')" alt="Click to view full size">
+                    </td>
+                    <td class="image-cell">
+                        <img src="data:image/jpeg;base64,{{ item[8]|b64encode }}" onclick="showImage('{{ item[8]|b64encode }}')" alt="Click to view full size">
+                    </td>
+                    <td class="image-cell">
+                        <img src="data:image/jpeg;base64,{{ item[9]|b64encode }}" onclick="showImage('{{ item[9]|b64encode }}')" alt="Click to view full size">
+                    </td>
+                    <td class="image-cell">
+                        <img src="data:image/jpeg;base64,{{ item[10]|b64encode }}" onclick="showImage('{{ item[10]|b64encode }}')" alt="Click to view full size">
+                    </td>
+                    <td class="image-cell">
+                        <img src="data:image/jpeg;base64,{{ item[11]|b64encode }}" onclick="showImage('{{ item[11]|b64encode }}')" alt="Click to view full size">
+                    </td>
+
+
+
+
+
+
+                    <!-- Add more table cells if needed -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+  </body>
+</html>
+
+
+  </body>
+</html>

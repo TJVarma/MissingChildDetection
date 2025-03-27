@@ -26,10 +26,11 @@ COPY . /app
 # Upgrade pip first
 RUN pip install --upgrade pip
 
-# Install dlib with custom flags to avoid memory crash
-RUN pip install --no-cache-dir dlib --config-settings="--build-option=--jobs=1"
+# ✅ Fix: limit dlib build to 1 thread to avoid memory crash
+ENV MAKEFLAGS="-j1"
+RUN pip install --no-cache-dir dlib
 
-# Install the rest of the requirements (skip dlib in requirements.txt!)
+# Install the rest of the requirements (make sure dlib is removed from requirements.txt)
 RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 5000
